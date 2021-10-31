@@ -13,7 +13,9 @@ public class Product {
     private Integer  price;
     private String  features;
     private Date created_at;
+    private String imageUrl;
     private Category category;
+
 
     private Set<OrderDetails> order_details= new HashSet<>(0);
 
@@ -73,7 +75,7 @@ public class Product {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id",nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     public Category getCategory() {
         return category;
     }
@@ -82,7 +84,16 @@ public class Product {
         this.category = category;
     }
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "product")
+    @Column(name = "image_url")
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     public Set<OrderDetails> getOrder_details() {
         return order_details;
     }
