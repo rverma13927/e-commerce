@@ -19,8 +19,8 @@ public class OrdersController {
     }
 
     @GetMapping("{order_id}")
-    ResponseEntity<Orders> getOrderDetailById(@PathVariable(value = "order_id") Integer order_id) {
-        return new ResponseEntity<>(ordersService.getOrderDetailById(order_id), HttpStatus.OK);
+    ResponseEntity<Orders> getOrderDetailById(@PathVariable(value = "order_id") Integer orderId) {
+        return new ResponseEntity<>(ordersService.getOrderDetailById(orderId), HttpStatus.OK);
     }
 
     @PostMapping("save")
