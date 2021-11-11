@@ -4,9 +4,10 @@ import com.ecommerce.Repository.ProductRepository;
 import com.ecommerce.dto.RequestDto.ProductRequestDto;
 import com.ecommerce.dto.ResponseMessageDto;
 import com.ecommerce.entity.Category;
-import com.ecommerce.entity.Customer;
 import com.ecommerce.entity.Product;
 import com.ecommerce.service.ProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -21,6 +22,11 @@ public class ProductServiceImpl implements ProductService {
         this.productRepository = productRepository;
     }
 
+    // sl4j abstraction
+    private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
+
+    //some of the feature you can use in below log4j2
+//private static final Logger logger = LogManager.getLogger(ProductService.class);
 
     @Override
     public Product findProductById(Integer id) {
@@ -29,24 +35,24 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ResponseMessageDto saveProduct(ProductRequestDto productRequestDto) {
-        Category category = new Category(); category.setCategory_id(productRequestDto.getCategory());
-        Product product = new Product(productRequestDto.getProduct_name(),productRequestDto.getPrice(),productRequestDto.getFeatures(),new Date(),category);
+        Category category = new Category();
+        category.setCategory_id(productRequestDto.getCategory());
+        Product product = new Product(productRequestDto.getProduct_name(), productRequestDto.getPrice(), productRequestDto.getFeatures(), new Date(), category);
         product.setCreated_at(new Date());
         productRepository.save(product);
-        return new ResponseMessageDto("Product is saved",true);
+        return new ResponseMessageDto("Product is saved", true);
     }
 
     @Override
     public List<Product> findAllProduct() {
+        logger.info("Inside the all product find service");
         return productRepository.findAll();
     }
 
     @Override
-    public List<Product> findAllProductByCategory(Integer category_id) {
+    public List<Product> findAllProductByCategory(Integer categoryId) {
         Category category = new Category();
-        category.setCategory_id(category_id);
-        List<Product> byCategory = productRepository.findByCategory(category);
-        System.out.println("Category" + byCategory.get(0).getCategory().getCategory_name());
-        return byCategory;
+        category.setCategory_id(categoryId);
+        return productRepository.findByCategory(category);
     }
 }
