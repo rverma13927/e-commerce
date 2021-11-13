@@ -1,7 +1,5 @@
 package com.ecommerce.service.serviceImpl;
 
-import com.ecommerce.Repository.OrderDetailsRepository;
-import com.ecommerce.Repository.OrdersRepository;
 import com.ecommerce.dto.RequestDto.OrderDetailsRequestDto;
 import com.ecommerce.dto.RequestDto.OrderRequestDto;
 import com.ecommerce.dto.ResponseMessageDto;
@@ -9,6 +7,8 @@ import com.ecommerce.entity.Customer;
 import com.ecommerce.entity.OrderDetails;
 import com.ecommerce.entity.Orders;
 import com.ecommerce.entity.Product;
+import com.ecommerce.repository.OrderDetailsRepository;
+import com.ecommerce.repository.OrdersRepository;
 import com.ecommerce.service.OrdersService;
 import org.springframework.stereotype.Service;
 

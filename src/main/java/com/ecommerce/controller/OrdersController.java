@@ -19,12 +19,12 @@ public class OrdersController {
     }
 
     @GetMapping("{order_id}")
-    ResponseEntity<Orders> getOrderDetailById(@PathVariable(value = "order_id") Integer orderId) {
+    public ResponseEntity<Orders> getOrderDetailById(@PathVariable(value = "order_id") Integer orderId) {
         return new ResponseEntity<>(ordersService.getOrderDetailById(orderId), HttpStatus.OK);
     }
 
     @PostMapping("save")
-    ResponseEntity<ResponseMessageDto> saveOrderDetail(@RequestBody OrderRequestDto orders) {
+    public ResponseEntity<ResponseMessageDto> saveOrderDetail(@RequestBody OrderRequestDto orders) {
         return new ResponseEntity<>(ordersService.saveOrderDetail(orders), HttpStatus.OK);
     }
 

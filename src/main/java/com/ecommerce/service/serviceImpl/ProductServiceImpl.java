@@ -1,10 +1,10 @@
 package com.ecommerce.service.serviceImpl;
 
-import com.ecommerce.Repository.ProductRepository;
 import com.ecommerce.dto.RequestDto.ProductRequestDto;
 import com.ecommerce.dto.ResponseMessageDto;
 import com.ecommerce.entity.Category;
 import com.ecommerce.entity.Product;
+import com.ecommerce.repository.ProductRepository;
 import com.ecommerce.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
