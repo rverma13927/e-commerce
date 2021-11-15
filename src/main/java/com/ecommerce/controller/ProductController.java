@@ -25,8 +25,8 @@ public class ProductController {
     }
 
     @GetMapping("category/{category_id}")
-    ResponseEntity<List<Product>> getProductByCategoryId(@PathVariable(value = "category_id") Integer category_id) {
-        return new ResponseEntity<>(productService.findAllProductByCategory(category_id), HttpStatus.OK);
+    ResponseEntity<List<Product>> getProductByCategoryId(@PathVariable(value = "category_id") Integer categoryId) {
+        return new ResponseEntity<>(productService.findAllProductByCategory(categoryId), HttpStatus.OK);
     }
 
     @GetMapping("{id}")
