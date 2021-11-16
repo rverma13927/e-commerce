@@ -37,13 +37,27 @@ public class User {
 			inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 
+	@Column(name = "first_name")
+	@Size(min = 1)
+	private String firstName;
+
+	@Size(min = 1)
+	@Column(name = "last_name")
+	private String lastName;
+
+	private Integer phone;
+	@Column(name = "cart_items")
+	 private String cartItems;
 	public User() {
 	}
 
-	public User(String username, String email, String password) {
+	public User(String username, String email, String password,String firstName,String lastName,Integer phone) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.firstName= firstName;
+		this.lastName=lastName;
+		this.phone=phone;
 	}
 
 	public Long getId() {
@@ -84,5 +98,37 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Integer getPhone() {
+		return phone;
+	}
+
+	public void setPhone(Integer phone) {
+		this.phone = phone;
+	}
+
+	public String getCartItems() {
+		return cartItems;
+	}
+
+	public void setCartItems(String cartItems) {
+		this.cartItems = cartItems;
 	}
 }
