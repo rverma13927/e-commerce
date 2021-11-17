@@ -1,5 +1,6 @@
 package com.ecommerce.security;
 
+import com.ecommerce.config.PreprocessingEndpointFilter;
 import com.ecommerce.security.jwt.AuthEntryPointJwt;
 import com.ecommerce.security.jwt.AuthTokenFilter;
 import com.ecommerce.security.services.UserDetailsServiceImpl;
@@ -10,12 +11,15 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
@@ -59,8 +63,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests().antMatchers("/api/auth/**").permitAll()
 				.antMatchers("/api/test/**").permitAll()
 				.antMatchers("/product").permitAll()
+				.antMatchers("/swagger-ui.html").permitAll()
+				.antMatchers("/").permitAll()
 				.anyRequest().authenticated();
 
+
+
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
+	}
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		if (true)
+			web.ignoring().antMatchers("/v2/api-docs",
+					"/configuration/ui",
+					"/swagger-resources/**",
+					"/configuration/security",
+					"/swagger-ui.html",
+					"/webjars/**");
+	}
+
+}
+@Configuration
+class InterceptorForApiEndpoint implements WebMvcConfigurer {
+	@Override
+	public void addInterceptors(InterceptorRegistry registry){
+		registry.addInterceptor(new PreprocessingEndpointFilter()).addPathPatterns("/**");
 	}
 }
