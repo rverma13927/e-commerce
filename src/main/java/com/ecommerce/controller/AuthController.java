@@ -10,7 +10,7 @@ import com.ecommerce.entity.User;
 import com.ecommerce.repository.RoleRepository;
 import com.ecommerce.repository.UserRepository;
 import com.ecommerce.security.jwt.JwtUtils;
-import com.ecommerce.security.services.UserDetailsImpl;
+import com.ecommerce.service.serviceImpl.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -1,6 +1,6 @@
 package com.ecommerce.security.jwt;
 
-import com.ecommerce.security.services.UserDetailsServiceImpl;
+import com.ecommerce.service.serviceImpl.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

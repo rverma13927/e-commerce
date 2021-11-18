@@ -1,7 +1,7 @@
 package com.ecommerce.security.jwt;
 
 
-import com.ecommerce.security.services.UserDetailsImpl;
+import com.ecommerce.service.serviceImpl.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

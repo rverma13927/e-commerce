@@ -3,7 +3,7 @@ package com.ecommerce.security;
 import com.ecommerce.config.PreprocessingEndpointFilter;
 import com.ecommerce.security.jwt.AuthEntryPointJwt;
 import com.ecommerce.security.jwt.AuthTokenFilter;
-import com.ecommerce.security.services.UserDetailsServiceImpl;
+import com.ecommerce.service.serviceImpl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -64,7 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/api/test/**").permitAll()
 				.antMatchers("/product").permitAll()
 				.antMatchers("/swagger-ui.html").permitAll()
-				.antMatchers("/").permitAll()
+//				.antMatchers("/").permitAll()
 				.anyRequest().authenticated();
 
 

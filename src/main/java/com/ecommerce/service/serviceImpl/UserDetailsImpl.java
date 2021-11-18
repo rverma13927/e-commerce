@@ -1,4 +1,4 @@
-package com.ecommerce.security.services;
+package com.ecommerce.service.serviceImpl;
 
 import com.ecommerce.entity.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
