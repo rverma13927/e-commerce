@@ -3,10 +3,10 @@ package com.ecommerce.service.serviceImpl;
 import com.ecommerce.dto.RequestDto.OrderDetailsRequestDto;
 import com.ecommerce.dto.RequestDto.OrderRequestDto;
 import com.ecommerce.dto.ResponseMessageDto;
-import com.ecommerce.entity.Customer;
 import com.ecommerce.entity.OrderDetails;
 import com.ecommerce.entity.Orders;
 import com.ecommerce.entity.Product;
+import com.ecommerce.entity.User;
 import com.ecommerce.repository.OrderDetailsRepository;
 import com.ecommerce.repository.OrdersRepository;
 import com.ecommerce.service.OrdersService;
@@ -33,18 +33,18 @@ public class OrdersServiceImpl implements OrdersService {
 
     @Override
     public ResponseMessageDto saveOrderDetail(OrderRequestDto orders) {
-        Customer customer = new Customer();
-        customer.setCustomer_id(orders.getCustomer_id());
-        Orders orders_ = new Orders(customer,orders.getAmount(),orders.getShipping_Address(),orders.getOrder_email(),orders.getOrder_phone(),orders.getOrder_status());
+        User user = new User();
+        user.setId(Long.valueOf(orders.getCustomer_id()));
+        Orders orders_ = new Orders(user, orders.getAmount(), orders.getShipping_Address(), orders.getOrder_email(), orders.getOrder_phone(), orders.getOrder_status());
 
         List<OrderDetailsRequestDto> orderDetailsRequestDtos = orders.getOrderDetailsRequestDtos();
         List<OrderDetails> orderDetailsToSave = new ArrayList<>();
-        for(OrderDetailsRequestDto orderDetailsRequestDto : orderDetailsRequestDtos){
+        for (OrderDetailsRequestDto orderDetailsRequestDto : orderDetailsRequestDtos) {
             Product product = new Product();
             product.setProduct_id(orderDetailsRequestDto.getProduct_id());
             Orders ordersTOSave = new Orders();
             ordersTOSave.setOrder_id(orders.getOrder_id());
-            OrderDetails orderDetails = new OrderDetails(product,ordersTOSave,orderDetailsRequestDto.getQuantity(),orderDetailsRequestDto.getBuying_price());
+            OrderDetails orderDetails = new OrderDetails(product, ordersTOSave, orderDetailsRequestDto.getQuantity(), orderDetailsRequestDto.getBuying_price());
             orderDetailsToSave.add(orderDetails);
         }
         orderDetailsRepository.saveAll(orderDetailsToSave);

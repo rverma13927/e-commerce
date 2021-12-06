@@ -9,20 +9,20 @@ import java.util.Set;
 public class Orders {
 
     private Integer order_id;
-    private Customer customer_id;
+    private User user_id;
     private Integer amount;
     private String shipping_Address;
     private String order_email;
     private String order_phone;
     private Boolean order_status;
 
-    private Set<OrderDetails> order_details= new HashSet<>(0);
+    private Set<OrderDetails> order_details = new HashSet<>(0);
 
     public Orders() {
     }
 
-    public Orders(Customer customer_id, Integer amount, String shipping_Address, String order_email, String order_phone, Boolean order_status) {
-        this.customer_id = customer_id;
+    public Orders(User user_id, Integer amount, String shipping_Address, String order_email, String order_phone, Boolean order_status) {
+        this.user_id = user_id;
         this.amount = amount;
         this.shipping_Address = shipping_Address;
         this.order_email = order_email;
@@ -32,7 +32,7 @@ public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "order_id")
+    @Column(name = "order_id")
     public Integer getOrder_id() {
         return order_id;
     }
@@ -43,14 +43,15 @@ public class Orders {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id", nullable = false)
-    public Customer getCustomer_id() {
-        return customer_id;
+    public User getUser_id() {
+        return user_id;
     }
 
-    public void setCustomer_id(Customer customer_id) {
-        this.customer_id = customer_id;
+    public void setUser_id(User user_id) {
+        this.user_id = user_id;
     }
-    @Column(name= "amount")
+
+    @Column(name = "amount")
     public Integer getAmount() {
         return amount;
     }
@@ -58,7 +59,8 @@ public class Orders {
     public void setAmount(Integer amount) {
         this.amount = amount;
     }
-    @Column(name= "shipping_Address")
+
+    @Column(name = "shipping_Address")
     public String getShipping_Address() {
         return shipping_Address;
     }
