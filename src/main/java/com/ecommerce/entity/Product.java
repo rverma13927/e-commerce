@@ -22,10 +22,11 @@ public class Product {
     public Product() {
     }
 
-    public Product(String product_name, Integer price, String features, Date created_at, Category category) {
+    public Product(String product_name, Integer price, String features,String imageUrl, Date created_at, Category category) {
         this.product_name = product_name;
         this.price = price;
         this.features = features;
+        this.imageUrl=imageUrl;
         this.created_at = created_at;
         this.category = category;
     }

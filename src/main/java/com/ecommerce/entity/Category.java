@@ -15,6 +15,15 @@ public class Category {
 
     private Set<Product> products = new HashSet<>(0);
 
+    public Category(Integer category_id, String category_name, String category_description) {
+        this.category_id = category_id;
+        this.category_name = category_name;
+        this.category_description = category_description;
+    }
+
+    public Category() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")

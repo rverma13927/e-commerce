@@ -37,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
     public ResponseMessageDto saveProduct(ProductRequestDto productRequestDto) {
         Category category = new Category();
         category.setCategory_id(productRequestDto.getCategory());
-        Product product = new Product(productRequestDto.getProduct_name(), productRequestDto.getPrice(), productRequestDto.getFeatures(), new Date(), category);
+        Product product = new Product(productRequestDto.getProduct_name(), productRequestDto.getPrice(), productRequestDto.getFeatures(),productRequestDto.getImageUrl(), new Date(), category);
         product.setCreated_at(new Date());
         productRepository.save(product);
         return new ResponseMessageDto("Product is saved", true);

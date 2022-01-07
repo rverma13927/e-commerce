@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("category")
 public class CategoryController {
 
@@ -26,7 +27,7 @@ public class CategoryController {
     }
 
     @PostMapping("/add")
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     ResponseEntity<ResponseMessageDto> getAllCategory(@RequestBody Category category) {
         return new ResponseEntity<>(categoryService.saveCategory(category), HttpStatus.OK);
     }

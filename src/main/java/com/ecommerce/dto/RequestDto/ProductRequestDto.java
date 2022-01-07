@@ -12,4 +12,5 @@ public class ProductRequestDto {
     private Integer price;
     private String features;
     private Integer category;
+    private String imageUrl;
 }
