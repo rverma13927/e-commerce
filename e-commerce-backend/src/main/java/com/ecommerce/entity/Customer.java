@@ -99,7 +99,7 @@ public class Customer {
         this.created_at = created_at;
     }
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "customer_id")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user_id")
     public Set<Orders> getOrders() {
         return orders;
     }
