@@ -31,4 +31,7 @@ public class ProductService {
     public Product createProduct(Product product) {
         return productRepository.save(product);
     }
+    public Product getProduct(String id) {
+        return productRepository.findById(id).get();
+    }
 }

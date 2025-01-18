@@ -31,4 +31,9 @@ public class ProductController {
         byte[] image = productService.getProductImage(id);
         return ResponseEntity.ok().body(image);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getProductId(@PathVariable String id) {
+
+        return ResponseEntity.ok().body( productService.getProduct(id));
+    }
 }
