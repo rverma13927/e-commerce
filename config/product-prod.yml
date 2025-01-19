@@ -14,3 +14,6 @@ logging:
 
 server:
   port: 8081
+
+get:
+  message: 'prod product message'
