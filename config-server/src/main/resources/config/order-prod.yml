@@ -1,0 +1,25 @@
+spring:
+  name:
+    application: "order"
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommerce
+    username: root
+    password: Root@1234
+    driver-class: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+jwtSecretKey: "avd"
+jwtExpirationMs : 20000
+
+logging:
+  level:
+    org:
+      springframework: INFO
+    com:
+      example: DEBUG

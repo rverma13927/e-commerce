@@ -5,9 +5,16 @@ spring:
   name:
     application: "configserver"
   profiles:
-    active: native
+    active: git
   cloud:
     config:
       server:
-       native:
-          search-locations: "classpath:/config"
+#       native:
+#          search-locations: "classpath:/config"
+       git:
+        uri: "https://github.com/rverma13927/e-commerce.git"
+        searchPaths: config
+        default-label: master
+        timeout: 5
+        clone-on-start: true
+        force-pull: true

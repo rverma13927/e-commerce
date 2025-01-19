@@ -3,6 +3,7 @@ package com.product.product_service.controller;
 import com.product.product_service.entity.Product;
 import com.product.product_service.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
