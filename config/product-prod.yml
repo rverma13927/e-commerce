@@ -16,4 +16,4 @@ server:
   port: 8081
 
 get:
-  message: 'production product message'
+  message: 'produc product message'
